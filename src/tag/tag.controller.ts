@@ -13,8 +13,10 @@ export class TagController {
   }
 
   @Get()
-  findAll() {
-    return this.tagService.findAll();
+  async findAll() {
+    const getall=await this.tagService.findAll();
+    const tag:string[]=getall.map(item=>item.name);
+    return {tag};
   }
 
   @Get(':id')

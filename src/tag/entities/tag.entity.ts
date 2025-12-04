@@ -1,13 +1,16 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'tag' })
 export class Tag {
   @PrimaryGeneratedColumn()
-  id: number;
+  id:number;
 
   @Column()
-  name: string;
-
-  @Column()
-  description: string;
+  name:string;
+// 标签创建时间
+  @CreateDateColumn({type: 'timestamp'})
+  createAt: Date;
 }
+
+
+
