@@ -14,6 +14,8 @@ export class UserController {
   async create(@Body('user') createUserDto: CreateUserDto): Promise<IUserResponse> {
     return await this.userService.createUser(createUserDto);
   }
+
+  
 @UsePipes(new ValidationPipe())
    @Post('login')
   async login(@Body('user') loginUserDto: LoginUserDto): Promise<IUserResponse> {
