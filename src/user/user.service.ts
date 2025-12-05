@@ -58,9 +58,9 @@ export class UserService {
   }
 
   gennerateUserResponse(user: User): IUserResponse {
-    if (!user.id) {
-      throw new HttpException('用户不存在', HttpStatus.BAD_REQUEST);
-    }
+    // if (!user.id) {
+    //   throw new HttpException('用户不存在', HttpStatus.BAD_REQUEST);
+    // }
     return {
       user: {
         ...user,
