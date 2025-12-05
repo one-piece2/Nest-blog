@@ -1,5 +1,6 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn, } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { ArticleEntity } from '@/article/entities/article.entity';
 
 @Entity({name: 'users'})
 export class User {
@@ -12,7 +13,10 @@ email: string;
 
 @Column()
 username: string;
-
+//第一个参数：指定关联的实体类
+//第二个参数：指定反向关联：ArticleEntity实体的author字段是关联到当前User实体的反向关联字段 建立双向连接。
+@OneToMany(()=>ArticleEntity,(article)=>article.author)
+articles:ArticleEntity[]
 
 @Column({default:''})
 bio: string;
