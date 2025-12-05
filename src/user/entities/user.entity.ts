@@ -21,7 +21,7 @@ bio: string;
 imge: string;
 
 @Column()
-password: string;
+password?: string;
 
 @BeforeInsert()
 @BeforeUpdate()
