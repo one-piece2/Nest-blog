@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn, UpdateDateColumn, JoinColumn } from 'typeorm';
 import { User } from '../../user/entities/user.entity'; // 需先创建User实体
 
 @Entity()
@@ -11,6 +11,9 @@ export class ArticleEntity {
 
   @Column()
   title: string;
+
+@Column()
+authorId: number;
 
   @Column({ nullable: true }) // 描述可选
   description: string;
@@ -35,5 +38,7 @@ export class ArticleEntity {
 
   // 关联User实体（多对一：多篇文章属于一个作者）
   @ManyToOne(() => User, (user) => user.articles)
+  //我要通过authorId这个字段和User关联
+  @JoinColumn({ name: 'authorId' })
   author: User;
 }

@@ -3,6 +3,7 @@ import { join } from 'path';
 import { Tag } from './tag/entities/tag.entity';
 import { User } from './user/entities/user.entity';
 import { DataSource } from 'typeorm';
+import { ArticleEntity } from './article/entities/article.entity';
 const config: PostgresConnectionOptions = {
   type: 'postgres',
   host: 'localhost',
@@ -10,7 +11,7 @@ const config: PostgresConnectionOptions = {
   username: 'postgres',
   password: '123456',
   database: 'blog',
-  entities: [Tag, User],
+  entities: [Tag, User,ArticleEntity],
   //作用：自动同步实体与数据库的结构
   // synchronize: true,
   migrationsTableName: 'migrations',
