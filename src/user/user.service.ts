@@ -68,4 +68,12 @@ export class UserService {
       }
     };
   }
+
+
+  async updateUser(id: number, updateUserDto: UpdateUserDto): Promise<IUserResponse> {
+    const user = await this.findById(id);
+    Object.assign(user, updateUserDto);
+    const savedUser = await this.userRepository.save(user);
+    return this.gennerateUserResponse(savedUser);
+  }
 }
