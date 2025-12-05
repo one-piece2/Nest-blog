@@ -8,6 +8,7 @@ import { AuthMiddleware } from './Middlewares/auth.middleware';
   imports: [TypeOrmModule.forFeature([User])],
   controllers: [UserController,],
   providers: [UserService],
+  exports: [UserService],
 })
 export class UserModule  implements NestModule{
   // 配置中间件
